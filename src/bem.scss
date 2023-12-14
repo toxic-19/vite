@@ -1,0 +1,44 @@
+$namespace: 'toxic' !default;
+$block-sel: '-' !default;
+$element-sel: '__' !default;
+$mod-sel: '--' !default;
+/* BEM .block__element--modifier */
+
+// block
+@mixin block($block) {
+  $BlockName: #{$namespace + $block-sel + $block};
+  .#{$BlockName} {
+    @content; /* 相当于占位符 */
+  }
+}
+// element
+@mixin ele($element) {
+  /* 需要获取到父级的类名 */
+  $selector: &;
+  $ElementName: #{$selector + $element-sel + $element};
+  /* 在使用BEM规则的情况没有必要再进行SCSS的嵌套 */
+  @at-root { /* at-root可以跳出SCSS的嵌套 */
+    #{$ElementName} { /* 不需要再加. 因为$selector已经包含了 */
+      @content;
+    }
+  }
+}
+// modified
+@mixin modify($modifier) {
+  /* 需要获取到父级的类名 */
+  $selector: &;
+  $ModifierName: #{$selector + $mod-sel + $modifier};
+  /* 在使用BEM规则的情况没有必要再进行SCSS的嵌套 */
+  @at-root { /* at-root可以跳出SCSS的嵌套 */
+    #{$ModifierName} {
+      @content;
+    }
+  }
+}
+
+
+// BFC
+@mixin bfc {
+  height: 100%;
+  overflow: hidden;
+}
