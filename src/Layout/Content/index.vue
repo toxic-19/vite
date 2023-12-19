@@ -12,13 +12,14 @@
 
 <style scoped lang="scss">
 @include block(content) {
+  @include scroll;
   flex: 1;
   overflow: auto;
   @include ele(items) {
     padding: 10px;
     margin: 10px;
     border: 1px solid #cccccc;
-    border-radius:4px
+    border-radius: 4px;
   }
 }
 </style>

@@ -2,6 +2,7 @@
 import Content from './Content/index.vue'
 import Menu from './Menu/index.vue'
 import Header from './Header/index.vue'
+
 </script>
 
 <template>

@@ -1,10 +1,12 @@
 <script setup lang="ts">
-
+const changeTheme = () => {
+  console.log('changeTheme')
+}
 </script>
 
 <template>
   <div class="toxic-header">
-    Header
+    <button @click="changeTheme">切换主题模式</button>
   </div>
 </template>
 
