@@ -12,7 +12,7 @@ import Header from './Header/index.vue'
     </div>
     <div class="toxic-layout__right">
       <Header></Header>
-      <Content></Content>
+      <Content><slot></slot></Content>
     </div>
   </div>
 </template>

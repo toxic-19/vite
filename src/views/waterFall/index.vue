@@ -173,7 +173,7 @@ const init = () => {
   const width = 130
   const top = 20
   // 一行几列
-  const column = Math.floor(document.body.clientWidth / width) // 向下取整
+  const column = Math.floor((document.body.clientWidth - 220) / width) // 向下取整
   // 1. 先对list中的前column个即第一行设置left和top
   for (let i = 0; i < list.length; i++) {
     if (i < column) {
@@ -224,9 +224,6 @@ onMounted(() => {
 
 <style scoped lang="scss">
 @include block(waterfall) {
-  margin-left: 20px;
-  height: 100%;
-  overflow: auto;
   position: relative;
   @include ele(items) {
     position: absolute;
