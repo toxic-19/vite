@@ -30,7 +30,11 @@ const tree = reactive<Tree[]>([
     <Card title="选择物品">
       <template #content>222222</template>
     </Card>
-    <Tree :tree-data="tree"></Tree>
+    <Tree :tree-data="tree">
+      <template #tree="slotProps">
+        {{ slotProps.content }}
+      </template>
+    </Tree>
     <WaterFall></WaterFall>
   </Layout>
 </template>
