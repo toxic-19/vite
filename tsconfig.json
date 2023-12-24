@@ -26,5 +26,13 @@
     "src/**/*.tsx",
     "src/**/*.vue"
   ],
+  "paths": {
+    "@": ["src"],
+    "@/*": ["src/*"],
+    "@/assets": ["src/assets/*"],
+    "@/api*": ["src/api/*"],
+    "@/store": ["src/store/*"],
+    "@/server": ["src/server/*"]
+  },
   "references": [{ "path": "./tsconfig.node.json" }]
 }
