@@ -3,13 +3,14 @@
 </script>
 
 <template>
-  <div class="toxic-menu">
+  <div class="menu">
+    <div class="menu-content"></div>
     Menu
   </div>
 </template>
 
 <style scoped lang="scss">
-@include block(menu) {
+.menu {
   min-width: 200px;
   height: 100%;
   border-right: 2px solid #cccccc;

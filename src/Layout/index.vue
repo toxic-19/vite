@@ -7,9 +7,7 @@ import Header from './Header/index.vue'
 
 <template>
   <div class="toxic-layout">
-    <div>
-      <Menu></Menu>
-    </div>
+    <Menu></Menu>
     <div class="toxic-layout__right">
       <Header></Header>
       <Content><slot></slot></Content>
