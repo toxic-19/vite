@@ -2,6 +2,7 @@
 <script setup lang="ts">
 import Layout from './Layout/index.vue' // setup下不需要注册
 import WaterFall from './views/waterFall/index.vue'
+import TodoList from './views/todoList/index.vue'
 import Card from './components/Card.vue'
 import Skeleton from './components/Skeleton.vue'
 import Tree from './components/Tree.vue'
@@ -45,6 +46,8 @@ const tree = reactive<Tree[]>([
         {{ slotProps.content }}
       </template>
     </Tree>
+    <h4>4. keepAlive组件</h4>
+    <TodoList></TodoList>
     <h4>3. 瀑布流</h4>
     <WaterFall></WaterFall>
   </Layout>

@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import {defineProps} from "vue";
 import {axios} from "@/server/axios"
-defineProps<{title: string}>()
 interface Data {
   data: {
     nickName: string,
