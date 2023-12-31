@@ -54,7 +54,7 @@ const changeActive = (id: number) => {
 $namespace: "todoList";
 @include block(container) {
   height: 400px;
-  width: 630px;
+  width: 80%;
   font-size: 14px;
   border-radius: 10px;
   border: 1px solid #cccccc;

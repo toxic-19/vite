@@ -3,20 +3,13 @@ import './style.css'
 // 导入Element-Plus
 import ElementPlus from 'element-plus'
 import "element-plus/dist/index.css"
-// 导入富文本编辑器
-import VMdEditor from '@kangc/v-md-editor'
-import '@kangc/v-md-editor/lib/style/base-editor.css'
-import githubTheme from '@kangc/v-md-editor/lib/theme/github.js'
-import '@kangc/v-md-editor/lib/theme/style/github.css'
+// 导入富文本编辑器編輯組件
+import { VMdEditor, VMdPreview} from '@/server/codemirror.ts'
 
-import highlight from 'highlight.js'
-
-VMdEditor.use(githubTheme, {
-  Hljs: highlight
-})
 import App from './App.vue'
 
 const app = createApp(App)
 app.use(ElementPlus)
 app.use(VMdEditor)
+app.use(VMdPreview)
 app.mount('#app')
