@@ -3,7 +3,6 @@
 import Layout from './Layout/index.vue' // setup下不需要注册
 import WaterFall from './views/waterFall/index.vue'
 import TodoList from './views/todoList/index.vue'
-import Card from './components/Card.vue'
 import Skeleton from './components/Skeleton.vue'
 import Tree from './components/Tree.vue'
 import {reactive, defineAsyncComponent} from "vue"
