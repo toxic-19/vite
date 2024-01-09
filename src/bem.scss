@@ -44,10 +44,10 @@ $mod-sel: '--' !default;
 }
 
 // 滚动条样式
-@mixin scroll {
+@mixin scroll($width: 6){
   @media (prefers-color-scheme: light) {
     &::-webkit-scrollbar {
-      width: 6px;
+      width: #{$width}px;
     }
     &::-webkit-scrollbar-thumb {
       border-radius: 10px;

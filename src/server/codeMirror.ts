@@ -13,7 +13,7 @@ import '@kangc/v-md-editor/lib/style/preview.css'
 import createEmojiPlugin from '@kangc/v-md-editor/lib/plugins/emoji/index'
 import '@kangc/v-md-editor/lib/plugins/emoji/emoji.css'
 
-//待办列表插件
+// 待办列表插件
 import createTodoListPlugin from '@kangc/v-md-editor/lib/plugins/todo-list/index'
 import '@kangc/v-md-editor/lib/plugins/todo-list/todo-list.css'
 

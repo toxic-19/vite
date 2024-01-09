@@ -6,8 +6,7 @@ const changeTheme = () => {
 
 <template>
   <div class="toxic-header">
-    <button @click="changeTheme">切换主题模式</button>
-    <el-button type="primary">Primary</el-button>
+    <a-button @click="changeTheme">切换主题模式</a-button>
   </div>
   <Teleport to="body">
     <div class="teleport">通过Teleport进行挂载的模板</div>

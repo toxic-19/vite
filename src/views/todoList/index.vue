@@ -56,7 +56,7 @@ $namespace: "todoList";
   height: 400px;
   width: 80%;
   font-size: 14px;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
   border: 1px solid #cccccc;
   background: #111111;
   display: flex;
