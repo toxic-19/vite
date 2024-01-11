@@ -43,9 +43,11 @@ const changeActive = (id: number) => {
       </div>
     </section>
     <div class="todoList-right">
-      <keep-alive>
-        <component :is="activeTab === 1 ? Today : Plan"></component>
-      </keep-alive>
+      <transition :duration="20" enter-active-class="animate__animated animate__pulse" leave-active-class="animate__animated animate__pulse">
+        <keep-alive>
+          <component :is="activeTab === 1 ? Today : Plan"></component>
+        </keep-alive>
+      </transition>
     </div>
   </div>
 </template>
@@ -54,7 +56,7 @@ const changeActive = (id: number) => {
 $namespace: "todoList";
 @include block(container) {
   height: 400px;
-  width: 80%;
+  width: 1200px;
   font-size: 14px;
   border-radius: 10px 0 0 10px;
   border: 1px solid #cccccc;
@@ -62,7 +64,7 @@ $namespace: "todoList";
   display: flex;
 }
 @include block(left) {
-  width: 190px;
+  width: 200px;
   border-radius: 10px;
   border-right: 1px solid #cccccc;
   background: #202020;
@@ -124,6 +126,6 @@ $namespace: "todoList";
   }
 }
 @include block(right) {
-  flex: 1;
+  width: 1000px;
 }
 </style>

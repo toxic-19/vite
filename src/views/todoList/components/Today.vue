@@ -1,24 +1,6 @@
 <script setup lang="ts">
-import { AppleOutlined, AndroidOutlined } from '@ant-design/icons-vue';
 import {onMounted, ref} from "vue"
-// toc
-const content = ref(`## 1.
-### 1.1
-## 2.
-### 2.1
-### 2.2
-## 3.
-### 3.1
-### 3.2
-### 3.3
-## 4.
-### 4.1
-### 4.2
-### 4.3
-## 5.
-### 5.1
-### 5.2
-### 5.3`)
+import {mdContent} from "../todo"
 const title = ref<any[]>([])
 const previewRef = ref()
 const getTitle = () => {
@@ -72,7 +54,9 @@ onMounted(() => {
         </a-tab-pane>
       </a-tabs>
     </section>
-    <v-md-preview :text="content" height="400px" ref="previewRef"></v-md-preview>
+    <section class="today-preview">
+      <v-md-preview :text="mdContent" height="400px" ref="previewRef"></v-md-preview>
+    </section>
   </div>
   <!-- mode: [edit | editable | preview] -->
 </template>
@@ -142,11 +126,14 @@ $namespace: "today";
   }
 }
 
-.v-md-editor-preview {
-  height: 400px;
-  flex: 1;
-  overflow: auto;
-  @include scroll(6);
+@include block('preview') {
+  width: 780px;
+  .v-md-editor-preview {
+    height: 400px;
+    flex: 1;
+    overflow: auto;
+    @include scroll(6);
+  }
 }
 
 :global(.ant-tabs > .ant-tabs-nav) {

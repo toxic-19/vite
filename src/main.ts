@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import './style.css'
+import 'animate.css'
 // 导入Antd
 // import setupAntd from "@/utils/antd.ts"
 // 导入富文本编辑器編輯組件
