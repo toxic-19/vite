@@ -5,6 +5,7 @@ import WaterFall from './views/waterFall/index.vue'
 import TodoList from './views/todoList/index.vue'
 import Skeleton from './components/Skeleton.vue'
 import Tree from './components/Tree.vue'
+import GroupNum from './views/groupNum/index.vue'
 import {reactive, defineAsyncComponent} from "vue"
 // 引入异步组件
 const CardSync = defineAsyncComponent(() => import('./components/Card.vue'))
@@ -47,6 +48,8 @@ const tree = reactive<Tree[]>([
     </Tree>
     <h4>4. keepAlive组件</h4>
     <TodoList></TodoList>
+    <h4>5. 动画效果</h4>
+    <GroupNum></GroupNum>
     <h4>3. 瀑布流</h4>
     <WaterFall></WaterFall>
   </Layout>
