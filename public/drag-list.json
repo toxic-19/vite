@@ -1,0 +1,74 @@
+{
+  "data": [
+    {
+      "id": 30012,
+      "menuName": "场所专题",
+      "menuUrl": "/data-research-room/place",
+      "userId": "admin",
+      "sortNum": 1
+    },
+    {
+      "id": 30013,
+      "menuName": "案卷统计",
+      "menuUrl": "/analysis/records",
+      "userId": "admin",
+      "sortNum": 2
+    },
+    {
+      "id": 30014,
+      "menuName": "物品分析",
+      "menuUrl": "/analysis/goods",
+      "userId": "admin",
+      "sortNum": 3
+    },
+    {
+      "id": 30015,
+      "menuName": "重点人员分析",
+      "menuUrl": "/analysis/person",
+      "userId": "admin",
+      "sortNum": 4
+    },
+    {
+      "id": 30016,
+      "menuName": "人员专题",
+      "menuUrl": "/data-research-room/person",
+      "userId": "admin",
+      "sortNum": 5
+    },
+    {
+      "id": 30017,
+      "menuName": "执法主题分析",
+      "menuUrl": "/analysis/subject",
+      "userId": "admin",
+      "sortNum": 6
+    },
+    {
+      "id": 30018,
+      "menuName": "巡查记录问题分析",
+      "menuUrl": "/analysis/patrol",
+      "userId": "admin",
+      "sortNum": 7
+    },
+    {
+      "id": 30019,
+      "menuName": "数据驾驶舱",
+      "menuUrl": "/screen",
+      "userId": "admin",
+      "sortNum": 8
+    },
+    {
+      "id": 30020,
+      "menuName": "物品统计",
+      "menuUrl": "/analysis/goods/statistics",
+      "userId": "admin",
+      "sortNum": 9
+    },
+    {
+      "id": 30021,
+      "menuName": "告警情况分析",
+      "menuUrl": "/analysis/alarm",
+      "userId": "admin",
+      "sortNum": 10
+    }
+  ]
+}
