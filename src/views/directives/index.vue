@@ -3,17 +3,25 @@ import type {Directive} from "vue"
 import {reactive, ref} from "vue" // 用于类型检查 只导入了 Directive 的类型。而不是 Directive 类
 import {axios} from "@/server/axios"
 
+// 1. 输入框聚焦指令
 const vFocus: Directive = { // 在setup中 任何以 v 开头的驼峰式命名的变量都可以被用作一个自定义指令
   mounted: (el: HTMLElement) => el.focus() // mounted: 元素插入到父元素时调用
 }
-const dragList = ref([])
 
+// 2. 列表拖拽指令
+type dragItem = {
+  id: number,
+  menuName: string,
+  menuUrl: string,
+  userId: string,
+  sortNum: number
+}
+const dragList = ref<dragItem[]>([])
 const parentNode = ref(null)
 const getList = async () => {
   const {data} = await axios.get('/drag-list.json')
   dragList.value = data
 }
-getList()
 const vDrag: Directive = (el: HTMLElement) => {
   let dragEl: HTMLElement | null = null // 拖拽元素
   let targetEl: HTMLElement | null = null // 目标元素
@@ -70,7 +78,9 @@ const vDrag: Directive = (el: HTMLElement) => {
   el.addEventListener('dragstart', dragStart)
   el.addEventListener('dragover', dragOver)
 }
-// 控制按钮鉴权
+getList()
+
+// 3. 控制按钮鉴权
 const rolesInfo = reactive({
   roles: "admin",
   name:"管理员",
@@ -96,30 +106,53 @@ const vHasShow: Directive<HTMLElement, string> = (el, bindings) => {
     }
   }
 }
+
+// 4. 图片懒加载指令
+// import.meta.globEager: JavaScript 中的一个属性，用于获取当前模块的静态导入（static imports）信息
+// Record<K, T>: 表示一个对象 该对象的键值对都是联合类型 K T 分别代表键值的类型
+const imageList: Record<string, {default: string}> = import.meta.globEager('../../assets/lazy-images/*.*') // 静态资源加载 类似于 import XX from ""
+const imageArray = Object.values(imageList).map(img => img.default)
+const vLazy: Directive<HTMLImageElement, string> = async (el, bindings) => {
+  // 可以在bindings中的value得到传递进来的值即 img
+  const root = document.getElementsByClassName('directives-images')[0]
+  const defaultImage = await import('../../assets/vue.svg')
+  el.src = defaultImage.default
+  const observer = new IntersectionObserver(entries => {
+    if(entries[0].intersectionRatio > 0 && entries[0].isIntersecting) {
+      el.src = bindings.value
+    }
+  }, {root}) // 定义监听的根元素
+  observer.observe(el)
+}
 </script>
 
 <template>
   <div class="directives-container">
     <a-input v-focus value="v-focus" placeholder="Basic usage" status="error"/>
     <hr>
+
     <div class="info">
-      <img src="@/assets/avatar.jpg" alt="头像" width="50" height="50"/>
+      <img src="src/assets/avatar.jpg" alt="头像" width="54" height="53"/>
       <span>{{rolesInfo.name}}</span>
     </div>
     <a-button v-has-show="['pos:product:edit']">创建</a-button>
     <a-button v-has-show="['pos:sale:list']">编辑</a-button>
     <a-button v-has-show="['pos:product:delete']">删除</a-button>
     <hr>
+
     <ul class="directives-list" ref="parentNode" v-drag>
       <li
           class="list-item" v-for="(item, index) in dragList"
-          :menuUrl="item.menuUrl"
           :key="item.id" draggable="true">
         <slot :item="item" :index="index">
           <div>{{ item.sortNum }} - {{ item.menuName }}</div>
         </slot>
       </li>
     </ul>
+
+    <div class="directives-images">
+      <img v-lazy="img" v-for="img in imageArray" :key="img" alt="" width="394" />
+    </div>
   </div>
 </template>
 
@@ -153,5 +186,12 @@ $namespace: "directives";
       background-color: #dbdbdb;
     }
   }
+}
+@include block(images) {
+  width: 400px;
+  height: 600px;
+  border: 1px solid #dbdbdb;
+  overflow-y: auto;
+  @include scroll()
 }
 </style>
