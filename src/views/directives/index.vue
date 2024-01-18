@@ -25,7 +25,7 @@ const getList = async () => {
 const vDrag: Directive = (el: HTMLElement) => {
   let dragEl: HTMLElement | null = null // 拖拽元素
   let targetEl: HTMLElement | null = null // 目标元素
-  const _index = element => {
+  const _index = (element: HTMLElement) => {
     const domData = Array.from(parentNode.value.childNodes)
     return domData.findIndex((dom: HTMLElement) => dom.innerText == element.innerText)
   }

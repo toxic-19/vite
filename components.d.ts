@@ -12,6 +12,7 @@ declare module 'vue' {
     AInput: typeof import('ant-design-vue/es')['Input']
     ATabPane: typeof import('ant-design-vue/es')['TabPane']
     ATabs: typeof import('ant-design-vue/es')['Tabs']
+    ATextarea: typeof import('ant-design-vue/es')['Textarea']
     Card: typeof import('./src/components/Card.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Skeleton: typeof import('./src/components/Skeleton.vue')['default']

@@ -7,6 +7,7 @@ import Skeleton from './components/Skeleton.vue'
 import Tree from './components/Tree.vue'
 import GroupNum from './views/groupNum/index.vue'
 import Directives from './views/directives/index.vue'
+import OwnHooks from './views/ownHooks/index.vue'
 import {reactive, defineAsyncComponent} from "vue"
 // 引入异步组件
 const CardSync = defineAsyncComponent(() => import('./components/Card.vue'))
@@ -53,6 +54,8 @@ const tree = reactive<Tree[]>([
     <GroupNum></GroupNum>
     <h4>6. 自定义指令</h4>
     <Directives></Directives>
+    <h4>7. 自定义Hook: 图片转base64</h4>
+    <OwnHooks></OwnHooks>
     <h4>3. 瀑布流</h4>
     <WaterFall></WaterFall>
   </Layout>
