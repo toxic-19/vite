@@ -14,6 +14,7 @@
     "ant-design-vue": "^4.0.8",
     "element-plus": "^2.4.4",
     "lodash": "^4.17.21",
+    "v-resize-zz": "^0.0.1",
     "vue": "^3.3.4"
   },
   "devDependencies": {

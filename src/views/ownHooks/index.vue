@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import useUrlToBase64 from "@/hooks/useUrlToBase64"
-import {ref} from "vue";
+import {ref} from "vue"
+// 为什么 hooks 使用了 promise：hooks 在 setup 下是同步执行的，用 Promise 可以用回调来接收 不阻塞 setup 代码块的执行
 const base64 = ref('')
-const transformBase64 = () => {
-  useUrlToBase64({
-    element: '#hook-images'
-  }).then(res => {
-    base64.value = res
-  })
+const transformBase64 = async () => {
+  base64.value = await useUrlToBase64({element: '#hook-images'})
 }
 </script>
 

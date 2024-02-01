@@ -6,6 +6,9 @@ import 'animate.css'
 // 导入富文本编辑器編輯組件
 import { VMdEditor, VMdPreview} from '@/server/codemirror.ts'
 
+// 使用自定义插件
+import useResize from "v-resize-zz"
+
 import App from './App.vue'
 
 const app = createApp(App)
@@ -14,4 +17,5 @@ const app = createApp(App)
 
 app.use(VMdEditor)
 app.use(VMdPreview)
+app.use(useResize)
 app.mount('#app')
