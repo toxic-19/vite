@@ -15,7 +15,8 @@
     "element-plus": "^2.4.4",
     "lodash": "^4.17.21",
     "v-resize-zz": "^0.0.1",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@types/node": "^20.10.5",

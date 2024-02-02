@@ -97,7 +97,7 @@ const rolesInfo = reactive({
 })
 const vHasShow: Directive<HTMLElement, string> = (el, bindings) => {
   const {value} = bindings
-  if (value && value instanceof Array && value.length > 0) {
+  if (value && Array.isArray(value) && value.length > 0) {
     const hasAuthorities = rolesInfo.authorities.some(permission => {
       return value.includes(permission)
     })
@@ -128,30 +128,36 @@ const vLazy: Directive<HTMLImageElement, string> = async (el, bindings) => {
 
 <template>
   <div class="directives-container">
-    <a-input v-focus value="v-focus" placeholder="Basic usage" status="error"/>
-    <hr>
+    <div>
+      <p>1. 输入框聚焦</p>
+      <a-input v-focus value="v-focus" placeholder="Basic usage" status="error"/>
+      <hr>
 
-    <div class="info">
-      <img src="src/assets/avatar.jpg" alt="头像" width="54" height="53"/>
-      <span>{{rolesInfo.name}}</span>
+      <p>2. 权限控制按钮</p>
+      <div class="info">
+        <img src="src/assets/avatar.jpg" alt="头像" width="54" height="53"/>
+        <span>{{rolesInfo.name}}</span>
+      </div>
+      <a-button v-has-show="['pos:product:edit']">创建</a-button>
+      <a-button v-has-show="['pos:sale:list']">编辑</a-button>
+      <a-button v-has-show="['pos:product:delete']">删除</a-button>
+      <hr>
+
+      <p>3. 列表拖拽</p>
+      <ul class="directives-list" ref="parentNode" v-drag>
+        <li
+            class="list-item" v-for="(item, index) in dragList"
+            :key="item.id" draggable="true">
+          <slot :item="item" :index="index">
+            <div>{{ item.sortNum }} - {{ item.menuName }}</div>
+          </slot>
+        </li>
+      </ul>
     </div>
-    <a-button v-has-show="['pos:product:edit']">创建</a-button>
-    <a-button v-has-show="['pos:sale:list']">编辑</a-button>
-    <a-button v-has-show="['pos:product:delete']">删除</a-button>
-    <hr>
-
-    <ul class="directives-list" ref="parentNode" v-drag>
-      <li
-          class="list-item" v-for="(item, index) in dragList"
-          :key="item.id" draggable="true">
-        <slot :item="item" :index="index">
-          <div>{{ item.sortNum }} - {{ item.menuName }}</div>
-        </slot>
-      </li>
-    </ul>
 
     <div class="directives-images">
-      <img v-lazy="img" v-for="img in imageArray" :key="img" alt="" width="394" />
+      <p>4. 图片的懒加载</p>
+      <img v-lazy="img" v-for="img in imageArray" :key="img" alt="" width="394" src=""/>
     </div>
   </div>
 </template>
@@ -159,7 +165,8 @@ const vLazy: Directive<HTMLImageElement, string> = async (el, bindings) => {
 <style scoped lang="scss">
 $namespace: "directives";
 @include block(container) {
-  width: 360px;
+  display: flex;
+  justify-content: space-around;
   .info {
     display: flex;
     align-items: center;

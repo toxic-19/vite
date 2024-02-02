@@ -28,13 +28,9 @@
     "src/**/*.tsx",
     "src/**/*.vue"
   ],
-  "paths": {
-    "@": ["src"],
-    "@/*": ["src/*"],
-    "@/assets": ["src/assets/*"],
-    "@/api*": ["src/api/*"],
-    "@/store": ["src/store/*"],
-    "@/server": ["src/server/*"]
+  "baseUrl": "./", // 解析非相对模块的基地址 默认是当前目录
+  "paths": { // 路径映射 相对于baseUrl
+    "@/*": ["src/*"]
   },
   "references": [{ "path": "./tsconfig.node.json" }]
 }
