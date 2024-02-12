@@ -8,14 +8,14 @@ const routes = <RouteRecordRaw[]>[
     component: () => import('@/Layout/index.vue'),
     redirect: '/directives',
     children: [
-      {path: '/directives', name: 'Directives', component: () => import('@/views/directives/index.vue')},
-      {path: '/groupNum', name: 'GroupNum', component: () => import('@/views/groupNum/index.vue')},
-      {path: '/tree', name: 'Tree', component: () => import('@/components/Tree.vue')},
-      {path: '/waterFall', name: 'WaterFall', component: () => import('@/views/waterFall/index.vue')},
-      {path: '/todo', name: 'TodoList', component: () => import('@/views/todoList/index.vue')},
-      {path: '/skeleton', name: 'Skeleton', component: () => import('@/components/Skeleton.vue')},
-      {path: '/hooks', name: 'OwnHooks', component: () => import('@/views/ownHooks/index.vue')},
-      {path: '/resize', name: 'Resize', component: () => import('@/views/useResize/index.vue')},
+      { path: '/directives', name: 'Directives', component: () => import('@/views/directives/index.vue'), meta: {icon: 'home'}},
+      { path: '/groupNum', name: 'GroupNum', component: () => import('@/views/groupNum/index.vue')},
+      { path: '/tree', name: 'Tree', component: () => import('@/components/Tree.vue')},
+      { path: '/waterFall', name: 'WaterFall', component: () => import('@/views/waterFall/index.vue')},
+      { path: '/todo', name: 'TodoList', component: () => import('@/views/todoList/index.vue')},
+      { path: '/skeleton', name: 'Skeleton', component: () => import('@/components/Skeleton.vue')},
+      { path: '/hooks', name: 'OwnHooks', component: () => import('@/views/ownHooks/index.vue')},
+      { path: '/resize', name: 'Resize', component: () => import('@/views/useResize/index.vue')}
     ]
   },
 ]
@@ -30,3 +30,7 @@ const options = <RouterOptions>{
 const router: Router = createRouter(options)
 
 export default router
+
+export {
+  routes
+}
