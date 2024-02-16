@@ -9,7 +9,7 @@ import GroupNum from './views/groupNum/index.vue'
 import Directives from './views/directives/index.vue'
 import OwnHooks from './views/ownHooks/index.vue'
 import Resize from './views/useResize/index.vue'
-import {reactive, defineAsyncComponent} from "vue"
+import {reactive, defineAsyncComponent, getCurrentInstance} from "vue"
 // 引入异步组件
 const CardSync = defineAsyncComponent(() => import('./components/Card.vue'))
 interface Tree {
@@ -30,6 +30,9 @@ const tree = reactive<Tree[]>([
   },
   {name: "4", checked: false}
 ])
+
+// const instance = getCurrentInstance()
+// instance.proxy.$loadings.show()
 </script>
 
 <template>

@@ -135,7 +135,7 @@ const vLazy: Directive<HTMLImageElement, string> = async (el, bindings) => {
 
       <p>2. 权限控制按钮</p>
       <div class="info">
-        <img src="src/assets/avatar.jpg" alt="头像" width="54" height="53"/>
+        <img src="@/assets/avatar.jpg" alt="头像" width="54" height="53"/>
         <span>{{rolesInfo.name}}</span>
       </div>
       <a-button v-has-show="['pos:product:edit']">创建</a-button>

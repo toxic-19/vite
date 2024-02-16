@@ -15,6 +15,7 @@ declare module 'vue' {
     ATextarea: typeof import('ant-design-vue/es')['Textarea']
     Card: typeof import('./src/components/Card.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    Loading: typeof import('./src/components/Loading/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Skeleton: typeof import('./src/components/Skeleton.vue')['default']

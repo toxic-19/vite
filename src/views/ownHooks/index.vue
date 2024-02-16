@@ -10,7 +10,7 @@ const transformBase64 = async () => {
 
 <template>
   <div class="hooks-container">
-    <img id="hook-images" src="src/assets/lazy-images/lazy4.jpg" alt="" />
+    <img id="hook-images" src="@/assets/lazy-images/lazy4.jpg" alt="" />
     <a-button @click="transformBase64">转换</a-button>
     <a-textarea
       v-model:value="base64"
