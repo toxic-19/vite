@@ -16,7 +16,8 @@ const routes = <RouteRecordRaw[]>[
       { path: '/skeleton', name: 'Skeleton', component: () => import('@/components/Skeleton.vue')},
       { path: '/hooks', name: 'OwnHooks', component: () => import('@/views/ownHooks/index.vue')},
       { path: '/resize', name: 'Resize', component: () => import('@/views/useResize/index.vue')},
-      { path: '/editor', name: 'Editor', component: () => import('@/views/editor/index.vue')}
+      { path: '/editor', name: 'Editor', component: () => import('@/views/editor/index.vue')},
+      { path: '/style', name: 'Style', component: () => import('@/views/cssStyle/index.vue')},
     ]
   },
 ]

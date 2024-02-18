@@ -16,6 +16,11 @@ const shuffle = () => {
       <li v-for="num in numItems" :key="num.id">{{num.number}}</li>
     </transition-group>
   </div>
+  <a-card title="Card title" :bordered="false" style="width: 300px">
+    <p>Card content</p>
+    <p>Card content</p>
+    <p>Card content</p>
+  </a-card>
 </template>
 
 <style scoped lang="scss">
@@ -39,5 +44,8 @@ $namespace: "group";
 }
 .change-move {
   transition: transform 0.8s ease;
+}
+:deep(.ant-card-body) {
+  background-color: rgba(255, 192, 203, 0.5);
 }
 </style>
