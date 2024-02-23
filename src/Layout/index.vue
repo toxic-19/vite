@@ -9,7 +9,7 @@ import Header from './Header/index.vue'
     <Menu></Menu>
     <div class="toxic-layout__right">
       <Header></Header>
-      <div class="content">
+      <div class="content" id="content">
         <router-view></router-view>
       </div>
     </div>

@@ -55,7 +55,7 @@ onMounted(() => {
       </a-tabs>
     </section>
     <section class="today-preview">
-      <v-md-preview :text="mdContent" height="400px" ref="previewRef"></v-md-preview>
+      <v-md-preview :text="mdContent" height="700px" ref="previewRef"></v-md-preview>
     </section>
   </div>
   <!-- mode: [edit | editable | preview] -->
@@ -72,7 +72,7 @@ $namespace: "today";
   min-width: 200px;
   color: #ffffff;
   padding: 0 10px;
-  height: 400px;
+  height: 700px;
   overflow: auto;
   border-right: 1px solid rgba(5, 5, 5, 0.06);
   @include scroll(0);
@@ -129,7 +129,7 @@ $namespace: "today";
 @include block('preview') {
   width: 780px;
   .v-md-editor-preview {
-    height: 400px;
+    height: 700px;
     flex: 1;
     overflow: auto;
     @include scroll(6);

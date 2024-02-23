@@ -8,12 +8,12 @@ const tabList = reactive<any[]>([
       {
         id: 1,
         name: "今天",
-        imgSrc: "src/assets/todolist/today.png"
+        imgSrc: "@/assets/todolist/today.png"
       },
       {
         id: 2,
         name: "计划",
-        imgSrc: "src/assets/todolist/plan.png"
+        imgSrc: "@/assets/todolist/plan.png"
       }
 ])
 const changeActive = (id: number) => {
@@ -35,7 +35,7 @@ const changeActive = (id: number) => {
         <nav>我的列表</nav>
         <ul>
           <li v-for="(item, index) in titleList" :key="index">
-            <img src="src/assets/todolist/today.png" alt="" />
+            <img src="@/assets/todolist/today.png" alt="" />
             <span class="title">{{item.title}}</span>
             <span class="number">{{item.num}}</span>
           </li>
@@ -55,7 +55,7 @@ const changeActive = (id: number) => {
 <style scoped lang="scss">
 $namespace: "todoList";
 @include block(container) {
-  height: 400px;
+  height: 700px;
   width: 1200px;
   font-size: 14px;
   border-radius: 10px 0 0 10px;
