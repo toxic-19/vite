@@ -1,19 +1,20 @@
 <script setup lang="ts">
 import Vditor from "vditor"
-import 'vditor/dist/index.css'
-import {onMounted, ref, nextTick} from "vue"
+import "vditor/dist/index.css"
+import { onMounted, ref, nextTick } from "vue"
 import markdownContent from "./markdown.md?raw"
 
 onMounted(() => {
-  const dom = document.getElementById('preview') as HTMLDivElement
+  const dom = document.getElementById("preview") as HTMLDivElement
   Vditor.preview(dom, markdownContent, {
-    mode: 'dark',
+    mode: "dark",
     // speech: {
     //   enable: true,
     // },
     anchor: 1,
     markdown: {
-      toc: true, listStyle: false,
+      toc: true,
+      listStyle: false
     },
     after() {
       if (window.innerWidth <= 768) {
@@ -22,65 +23,80 @@ onMounted(() => {
       // console.log('渲染完毕？', window.innerWidth)
       // initOutline()
       getOutline()
+      const firstSpan = document.getElementById("outline").querySelector("span")
+      window.location = "/preview/#" + firstSpan.innerText
     }
   })
 })
 
 const initOutline = () => {
   const headingElements = []
-  const scrollDOM = document.getElementById('content')
-  Array.from(document.getElementById('preview').children).forEach((item) => {
-    if (item.tagName.length === 2 && item.tagName !== 'HR' && item.tagName.indexOf('H') === 0) {
+  const scrollDOM = document.getElementById("content")
+  console.log("scrollDom", scrollDOM)
+  Array.from(document.getElementById("preview").children).forEach((item) => {
+    if (
+      item.tagName.length === 2 &&
+      item.tagName !== "HR" &&
+      item.tagName.indexOf("H") === 0
+    ) {
       headingElements.push(item)
     }
   })
   let toc = []
-  scrollDOM.addEventListener('scroll', () => {
+  scrollDOM.addEventListener("scroll", () => {
     const scrollTop = scrollDOM.scrollTop
     toc = []
     headingElements.forEach((item) => {
       toc.push({
         id: item.id,
-        offsetTop: item.offsetTop,
+        offsetTop: item.offsetTop
       })
     })
 
-    const currentElement = document.querySelector('.vditor-outline__item--current')
+    const currentElement = document.querySelector(
+      ".vditor-outline__item--current"
+    )
     for (let i = 0, iMax = toc.length; i < iMax; i++) {
       if (scrollTop < toc[i].offsetTop - 10) {
         if (currentElement) {
-          currentElement.classList.remove('vditor-outline__item--current')
+          currentElement.classList.remove("vditor-outline__item--current")
         }
-        let index = i > 0 ? i  : 0
-        document.querySelector('span[data-target-id="' + toc[index].id + '"]').classList.add('vditor-outline__item--current')
+        let index = i > 0 ? i : 0
+        document
+          .querySelector('span[data-target-id="' + toc[index].id + '"]')
+          .classList.add("vditor-outline__item--current")
         break
       }
     }
   })
 }
 const getOutline = () => {
-  const outlineElement = document.getElementById('outline')
-  Vditor.outlineRender(document.getElementById('preview'), outlineElement)
-  if (outlineElement.innerText.trim() !== '') {
-    outlineElement.style.display = 'block'
+  const outlineElement = document.getElementById("outline")
+  Vditor.outlineRender(document.getElementById("preview"), outlineElement)
+  if (outlineElement.innerText.trim() !== "") {
+    outlineElement.style.display = "block"
     initOutline()
     clickOutLine()
   }
 }
 const clickOutLine = () => {
-  const spans = document.getElementById('outline').querySelectorAll('span[data-target-id]')
-  spans.forEach((item: HTMLDivElement) => {
-    item.addEventListener('click', () => {
-      const title = item.innerText.replace(/\s/g, '-')
-      window.location = '/preview/#'+title
-    })
+  // const spans = document.getElementById('outline').querySelectorAll('span[data-target-id]') as object
+  const ulDOM = document.getElementById("outline").querySelector("ul")
+  ulDOM.addEventListener("click", (event: any) => {
+    const title = event.target.innerText.replace(/\s/g, "-")
+    window.location = "/preview/#" + title
   })
 }
+// const theme = ref('light')
+// const changeTheme = () => {
+//   const mode = theme.value === 'light' ? 'dark' : 'light'
+//   vditor.value.setTheme(mode, mode)
+//   localStorage.setItem('theme', 'mode')
+// }
 </script>
 
-
 <template>
-<!--  <a-button @click="clickOutLine">clickOutLine</a-button>-->
+  <!--  <a-button @click="changeTheme">changeTheme</a-button>-->
   <div id="previewWrap">
     <div id="preview" class="preview"></div>
   </div>
@@ -112,6 +128,7 @@ const clickOutLine = () => {
   overflow: auto;
   font-size: 12px;
   border-left: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
   border-right: 0;
   --border-color: #eee;
   --toolbar-icon-hover-color: #4285f4;
@@ -127,15 +144,15 @@ const clickOutLine = () => {
 }
 
 .vditor-reset ul[data-style="*"] {
-  list-style-type: disc
+  list-style-type: disc;
 }
 
 .vditor-reset ul[data-style="*"] ul {
-  list-style-type: circle
+  list-style-type: circle;
 }
 
 .vditor-reset ul[data-style="*"] ul ul {
-  list-style-type: square
+  list-style-type: square;
 }
 
 .vditor-reset ul[data-style="+"] {
@@ -143,35 +160,35 @@ const clickOutLine = () => {
 }
 
 .vditor-reset ul[data-style="+"] ul {
-  list-style-type: "\1f49a"
+  list-style-type: "\1f49a";
 }
 
 .vditor-reset ul[data-style="+"] ul ul {
-  list-style-type: "\1f49b"
+  list-style-type: "\1f49b";
 }
 
 .vditor-reset ul[data-style="-"] {
-  list-style-type: korean-hangul-formal
+  list-style-type: korean-hangul-formal;
 }
 
 .vditor-reset ul[data-style="-"] ul {
-  list-style-type: decimal-leading-zero
+  list-style-type: decimal-leading-zero;
 }
 
 .vditor-reset ul[data-style="-"] ul ul {
-  list-style-type: lower-alpha
+  list-style-type: lower-alpha;
 }
 
 .vditor-reset ol[data-style="1)"] {
-  list-style-type: simp-chinese-formal
+  list-style-type: simp-chinese-formal;
 }
 
 .vditor-reset ol[data-style="1)"] ol {
-  list-style-type: simp-chinese-informal
+  list-style-type: simp-chinese-informal;
 }
 
 .vditor-reset ol[data-style="1)"] ol ol {
-  list-style-type: trad-chinese-formal
+  list-style-type: trad-chinese-formal;
 }
 
 @media screen and (max-width: 768px) {
@@ -203,5 +220,4 @@ const clickOutLine = () => {
     color: #4285f4;
   }
 }
-
 </style>

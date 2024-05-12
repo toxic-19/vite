@@ -30,14 +30,66 @@ function ReInitVditor() {
     placeholder: "君子藏器于身，待时而动",
     counter:{
       enable:true,
+      type: 'markdown'
     },
-    preview:{
-      actions:[]
+    preview: {
+      delay: 0,
+      hljs: {
+        style: 'monokai',
+        lineNumber: true
+      }
     },
     outline: {
       enable: true,
       position: 'right'
     },
+    toolbarConfig: {
+      pin: true
+    },
+    toolbar: [
+      'emoji',
+      'headings',
+      'bold',
+      'italic',
+      'strike',
+      'link',
+      '|',
+      'list',
+      'ordered-list',
+      'check',
+      'outdent',
+      'indent',
+      '|',
+      'quote',
+      'line',
+      'code',
+      'inline-code',
+      'insert-before',
+      'insert-after',
+      '|',
+      // 'record',
+      'upload',
+      'table',
+      '|',
+      'undo',
+      'redo',
+      '|',
+      'fullscreen',
+      'outline',
+      // 'content-theme',
+      'export',
+      {
+        name: 'more',
+        toolbar: [
+          'edit-mode',
+          'preview',
+          'both',
+          'code-theme',
+          // 'info',
+          // 'help',
+        ]
+      }
+    ],
     // input:(value) => {
     //   content = value
     // },
@@ -45,14 +97,18 @@ function ReInitVditor() {
     //   // vditor.value is a instance of Vditor now and thus can be safely used here
     //   vditor.value.setValue(content)
     // }
+    after() {
+      const theme = localStorage.getItem('theme')
+      vditor.value.setTheme(theme, theme)
+    }
   })
 }
 
 const checked = ref<boolean>(false)
 const changeTheme = () => {
-  const mode = checked.value ? 'dark' : 'light'
+  const mode = checked.value ? 'light' : 'dark'
   vditor.value.setTheme(mode, mode)
-  localStorage.setItem('theme', 'mode')
+  localStorage.setItem('theme', mode)
 }
 onMounted(() => {
   window.addEventListener('resize', ReInitVditor)
@@ -82,5 +138,15 @@ $namespace: "edit";
 }
 .vditor-content {
   font-size: 20px;
+}
+:deep(.vditor-reset) {
+  @include scroll;
+}
+:deep(.vditor-outline li > span) {
+  font-size: 14px;
+  svg {
+    width: 12px;
+    height: 8px;
+  }
 }
 </style>

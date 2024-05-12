@@ -10,10 +10,10 @@ const routes = <RouteRecordRaw[]>[
     children: [
       { path: '/directives', name: 'Directives', component: () => import('@/views/directives/index.vue'), meta: {icon: 'home'}},
       { path: '/groupNum', name: 'GroupNum', component: () => import('@/views/groupNum/index.vue')},
-      { path: '/tree', name: 'Tree', component: () => import('@/components/Tree.vue')},
+      { path: '/tree', name: 'Tree', component: () => import('@/views/tree/index.vue')},
       { path: '/waterFall', name: 'WaterFall', component: () => import('@/views/waterFall/index.vue')},
       { path: '/todo', name: 'TodoList', component: () => import('@/views/todoList/index.vue')},
-      { path: '/skeleton', name: 'Skeleton', component: () => import('@/components/Skeleton.vue')},
+      { path: '/skeleton', name: 'Skeleton', component: () => import('@/views/skeleton/index.vue')},
       { path: '/hooks', name: 'OwnHooks', component: () => import('@/views/ownHooks/index.vue')},
       { path: '/resize', name: 'Resize', component: () => import('@/views/useResize/index.vue')},
       { path: '/editor', name: 'Editor', component: () => import('@/views/editor/index.vue')},

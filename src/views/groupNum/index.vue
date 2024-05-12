@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import {ref} from "vue"
+import { ref } from "vue"
 import _ from "lodash"
-let numItems = ref(Array.from({length: 81}).map((_, index) => {
-  return {id: index, number: (index % 9) + 1}
-}))
+let numItems = ref(
+  Array.from({ length: 81 }).map((_, index) => {
+    return { id: index, number: (index % 9) + 1 }
+  })
+)
 const shuffle = () => {
   numItems.value = _.shuffle(numItems.value) // shuffle: 创建一个被打乱值的集合。
 }
@@ -13,7 +15,7 @@ const shuffle = () => {
   <a-button @click="shuffle">change</a-button>
   <div class="group-container">
     <transition-group tag="ul" name="change">
-      <li v-for="num in numItems" :key="num.id">{{num.number}}</li>
+      <li v-for="num in numItems" :key="num.id">{{ num.number }}</li>
     </transition-group>
   </div>
   <a-card title="Card title" :bordered="false" style="width: 300px">
